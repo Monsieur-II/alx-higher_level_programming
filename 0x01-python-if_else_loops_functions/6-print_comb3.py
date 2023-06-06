@@ -2,7 +2,7 @@
 
 for i in range(9):
     if i == 8:
-        print(f"{89:d}")
+        print("{:d}".format(89))
     else:
         for j in range(i + 1, 10):
-            print(f"{i:d}{j:d}", end=", ")
+            print("{:d}{:d}".format(i, j), end=", ")
