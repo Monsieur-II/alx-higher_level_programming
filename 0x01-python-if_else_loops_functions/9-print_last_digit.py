@@ -5,4 +5,3 @@ def print_last_digit(number):
 
     print("{}".format(digit), end="")
     return digit
-
