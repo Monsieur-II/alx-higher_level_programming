@@ -1,4 +1,4 @@
-##If-Else Statements in Python
+## If-Else Statements in Python
 * If-else statements
 * Loops
 * Functions
