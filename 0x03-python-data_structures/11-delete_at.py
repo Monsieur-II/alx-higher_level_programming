@@ -2,9 +2,8 @@
 
 def delete_at(my_list=[], idx=0):
     """Deletes item at specific index"""
-    if my_list:
-        if idx < 0 or idx > (len(my_list) - 1):
-            return my_list
-        del my_list[idx]
-
+    if idx < 0 or idx > (len(my_list) - 1):
         return my_list
+    del my_list[idx]
+
+    return my_list
