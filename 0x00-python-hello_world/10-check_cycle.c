@@ -9,21 +9,19 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *current, *check;
+	listint_t *slow = list;
+	listint_t *fast = list;
 
-	if (!list || !list->next)
+	if (!list)
 		return (0);
 
-	current = list;
-	check = current->next;
-
-	while (current && check->next && check->next->next)
+	while (fast && fast->next)
 	{
-		if (current == check)
-			return (1);
+		slow = slow->next;
+		fast = fast->next->next;
 
-		current = current->next;
-		check = check->next->next;
+		if (slow == fast)
+			return (1);
 	}
 	return (0);
 }
