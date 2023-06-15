@@ -9,25 +9,26 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *node = *head, *new;
+	listint_t *current = *head, *new;
 
 	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	if (!new || !head)
 		return (NULL);
+
 	new->n = number;
 
-	if (node == NULL || node->n >= number)
+	if (!current || number < current->n)
 	{
-		new->next = node;
-		*head = new;
+		new->next = current->next;
+		current->next = new;
 		return (new);
 	}
 
-	while (node && node->next && node->next->n < number)
-		node = node->next;
+	while (current && current->next && number > current->next->n)
+		current = current->next;
 
-	new->next = node->next;
-	node->next = new;
-
+	new->next = current->next;
+	current->next = new;
 	return (new);
+
 }
