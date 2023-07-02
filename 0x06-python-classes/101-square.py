@@ -16,7 +16,7 @@ class Square:
         self.size = size
         self.position = position
 
-    def __str__(self):
+    def __repr__(self):
         """Represents the instance"""
         self.my_print()
         return ""
