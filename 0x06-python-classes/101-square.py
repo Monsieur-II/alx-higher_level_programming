@@ -16,9 +16,10 @@ class Square:
         self.size = size
         self.position = position
 
-    def __repr__(self):
+    def __str__(self):
         """Represents the instance"""
         self.my_print()
+        return ""
 
     @property
     def size(self):
@@ -67,4 +68,4 @@ class Square:
             x = self.position[0]
             for i in range(self.__size):
                 print(' ' * x, end="")
-                print('#' * self.__size)
+                print('#' * self.__size, end="" if i == (self.__size - 1) else "\n")
