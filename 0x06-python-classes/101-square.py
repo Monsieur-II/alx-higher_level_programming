@@ -60,9 +60,7 @@ class Square:
 
     def my_print(self):
         """Prints square with '#'"""
-        if self.size == 0:
-            print()
-        else:
+        if self.size != 0:
             for i in range(self.position[1]):
                 print()
             x = self.position[0]
