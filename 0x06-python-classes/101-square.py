@@ -18,7 +18,7 @@ class Square:
 
     def __repr__(self):
         """Represents the instance"""
-        return self.my_print()
+        self.my_print()
 
     @property
     def size(self):
