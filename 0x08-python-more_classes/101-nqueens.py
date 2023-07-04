@@ -6,8 +6,8 @@ class Chess:
     @staticmethod
     def nQueens(n):
         columns = set()
-        positiveConstants = set()
-        negativeConstants = set()
+        posConsts = set()
+        negConsts = set()
         board = [[] for i in range(n)]
 
         def backtrack(r):
@@ -17,21 +17,20 @@ class Chess:
                 return
 
             for c in range(n):
-                if c in columns or (r + c) in positiveConstants or
-                (r - c) in negativeConstants:
+                if c in columns or r + c in posConsts or r - c in negConsts:
                     continue
 
                 columns.add(c)
-                positiveConstants.add(r + c)
-                negativeConstants.add(r - c)
+                posConsts.add(r + c)
+                negConsts.add(r - c)
                 board[r].append(r)
                 board[r].append(c)
 
                 backtrack(r + 1)
 
                 columns.remove(c)
-                positiveConstants.remove(r + c)
-                negativeConstants.remove(r - c)
+                posConsts.remove(r + c)
+                negConsts.remove(r - c)
                 board[r].clear()
 
         backtrack(0)
