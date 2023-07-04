@@ -44,13 +44,13 @@ class Rectangle:
         return (self.width * self.height)
 
     def perimeter(self):
-        if any([side == 0 for side in [self.__width, self.__height]]):
+        if any([side == 0 for side in [self.width, self.height]]):
             return 0
         else:
             return (2 * self.width) + (2 * self.height)
 
     def my_print(self):
-        if self.perimeter:
+        if self.perimeter():
             x = self.height
             for i in range(self.height):
                 print('#' * self.width, end="" if i == (x - 1) else "\n")
