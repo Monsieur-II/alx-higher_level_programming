@@ -6,11 +6,11 @@ def add_integer(a, b=98):
     """Performs addition operation on two arguments
 
     Args:
-            a (int, float): First operand
-            b (int, float): Second operand (optional)
+        a (int, float): First operand
+        b (int, float): Second operand (optional)
 
-    Returns:
-             the sum of a and b
+    Raises:
+        TypeError: if either b or a is a non-integer and non-float
     """
     if not(isinstance(a, (int, float))):
         raise TypeError("a must be an integer")
