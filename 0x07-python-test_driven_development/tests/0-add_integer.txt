@@ -11,7 +11,7 @@ Usage
 Import module:
 ::
 
-    >>> add_integer = __import__('pyProg').add_integer
+    >>> add_integer = __import__('0-add_integer').add_integer
 
 Now use it:
 Works for one valid argument and two valid arguments
