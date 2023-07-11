@@ -1,0 +1,26 @@
+===========================
+How to Use 7-base_geometry.py
+===========================
+
+The module defines a class ``BaseGeometry``
+
+Usage
+=====
+
+Import module:
+::
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now use it:
+
+::
+
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("my_int", 12)
+	>>> bg.integer_validator("width", 89)
+	>>> try:
+	...     bg.integer_validator("name", "John")
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	[TypeError] name must be an integer
