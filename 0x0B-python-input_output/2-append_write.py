@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Defines a file-writing function."""
+"""Defines a file-appending function."""
 
 
-def write_file(filename="", text=""):
-    """Writes a string to a text file
+def append_write(filename="", text=""):
+    """Appends a string to a text file
 
     Returns: number of chars read
     """
