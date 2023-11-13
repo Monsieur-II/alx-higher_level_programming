@@ -1,12 +1,22 @@
 #!/usr/bin/python3
-from base import Base
-
 """Defines a Rectangle Class"""
+from base import Base
 
 
 class Rectangle(Base):
+    """
+    A class to create Rectangle objects from
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initiates an instance"""
+        """
+        Initiates an instance
+        Args:
+            width: the width
+            height the height
+            x: position on x-axis
+            y: position on y-axis
+            id: id of the Rectangle object
+        """
         super().__init__(id)
         self.width = width
         self.height = height
@@ -66,11 +76,13 @@ class Rectangle(Base):
             raise ValueError("{} must be >= 0".format(name))
 
     def area(self):
+        """Returns the area of the rectangle"""
         return self.width * self.height
 
     def __str__(self):
-        return f"[Rectangle] \
-({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        """Returns string representation of rectangle"""
+        return "[Rectangle] \
+({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
 
     def display(self):
         """Prints square with '#'"""
@@ -86,6 +98,7 @@ class Rectangle(Base):
                 print('#' * self.__width)
 
     def update(self, *args, **kwargs):
+        """Updates the attributes of a rectangle"""
         if not args or len(args) == 0:
             if "id" in kwargs:
                 self.id = kwargs["id"]
@@ -111,4 +124,7 @@ class Rectangle(Base):
                 self.y = args[4]
 
     def to_dictionary(self):
-        return self.__dict__
+        """Returns dictionary representation of the object"""
+        dic = {'id': self.id, 'width': self.width, 'height': self.height}
+        dic.update({'x': self.x, 'y': self.y})
+        return dic

@@ -5,12 +5,22 @@ from rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """A class to create square objects from"""
     def __init__(self, size, x=0, y=0, id=None):
+        """
+               Initiates an instance
+               Args:
+                   size: size of the square
+                   x: position on x-axis
+                   y: position on y-axis
+                   id: id of the Rectangle object
+               """
         super().__init__(width=size, height=size, x=x, y=y, id=id)
 
     def __str__(self):
+        """Returns string representation of object"""
         return f"[Square] \
-({self.id}) {self.x}/{self.y} - {self.width}"
+({self.id}) {self.x}/{self.y} - {self.size}"
 
     @property
     def size(self):
@@ -22,6 +32,7 @@ class Square(Rectangle):
         self.height = size
 
     def update(self, *args, **kwargs):
+        """Updates the attributes of a rectangle"""
         if not args or len(args) == 0:
             if "id" in kwargs:
                 self.id = kwargs["id"]
@@ -43,4 +54,7 @@ class Square(Rectangle):
                 self.y = args[3]
 
     def to_dictionary(self):
-        return self.__dict__
+        """Returns dictionary representation of the object"""
+        dic = {'id': self.id, 'size': self.size}
+        dic.update({'x': self.x, 'y': self.y})
+        return dic
