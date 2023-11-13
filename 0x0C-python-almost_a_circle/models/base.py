@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a Base Class"""
 import json
+import csv
 
 
 class Base:
@@ -90,5 +91,39 @@ class Base:
                 for i in list_t:
                     new.append(cls.create(**i))
                 return new
+        except IOError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes to a file in csv format"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w") as file:
+            if list_objs is None or not len(list_objs):
+                file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["width", "height", "x", "y", "id"]
+                elif cls.__name__ == "Square":
+                    fieldnames = ["size", "x", "y", "id"]
+
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            for dic in list_objs:
+                writer.writerow(dic.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of instances"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode="w") as file:
+                if filename == "Rectangle.csv":
+                    fieldnames = ["width", "height", "x", "y", "id"]
+                elif filename == "Square.csv":
+                    fieldnames = ["size", "x", "y", "id"]
+
+                dic_list = csv.DictReader(file, fieldnames=fieldnames)
+                dic_list = [dict([key, int(value)] for key, value in d.items()) for d in dic_list]
+                return [cls.create(**d) for d in dic_list]
         except IOError:
             return []
