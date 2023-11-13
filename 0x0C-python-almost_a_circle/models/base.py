@@ -2,6 +2,7 @@
 """Defines a Base Class"""
 import json
 import csv
+import os
 
 
 class Base:
@@ -113,18 +114,25 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Returns a list of instances"""
-        filename = cls.__name__ + ".csv"
-        try:
-            with open(filename, mode="w") as file:
-                if filename == "Rectangle.csv":
-                    fieldnames = ["width", "height", "x", "y", "id"]
-                elif filename == "Square.csv":
-                    fieldnames = ["size", "x", "y", "id"]
+        """Deserializes CSV format from a file.
 
-                di_list = csv.DictReader(file, fieldnames=fieldnames)
-                di_list = [dict([key, int(value)]
-                                for key, value in d.items()) for d in di_list]
-                return [cls.create(**d) for d in di_list]
-        except IOError:
-            return []
+        Returns: list of instances
+        """
+
+        filename = cls.__name__ + ".csv"
+        lists = []
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                reader = csv.reader(f, delimiter=',')
+                if cls.__name__ == 'Rectangle':
+                    fields = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fields = ['id', 'size', 'x', 'y']
+                for x, row in enumerate(reader):
+                    if x > 0:
+                        i = cls(1, 1)
+                        for j, e in enumerate(row):
+                            if e:
+                                setattr(i, fields[j], int(e))
+                        lists.append(i)
+        return lists
