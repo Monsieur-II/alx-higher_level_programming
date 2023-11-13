@@ -122,8 +122,9 @@ class Base:
                 elif filename == "Square.csv":
                     fieldnames = ["size", "x", "y", "id"]
 
-                dic_list = csv.DictReader(file, fieldnames=fieldnames)
-                dic_list = [dict([key, int(value)] for key, value in d.items()) for d in dic_list]
-                return [cls.create(**d) for d in dic_list]
+                di_list = csv.DictReader(file, fieldnames=fieldnames)
+                di_list = [dict([key, int(value)]
+                                for key, value in d.items()) for d in di_list]
+                return [cls.create(**d) for d in di_list]
         except IOError:
             return []
