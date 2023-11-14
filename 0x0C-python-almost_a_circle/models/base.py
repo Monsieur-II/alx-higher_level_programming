@@ -51,7 +51,6 @@ class Base:
 
         with open(filename, "w") as file:
             file.write(new)
-            file.close()
 
     @staticmethod
     def from_json_string(json_string):
