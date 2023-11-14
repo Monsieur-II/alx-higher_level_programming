@@ -39,12 +39,14 @@ class Base:
         Saves json representation of objects to a file
         list_objs: the list of objects
         """
-        new = []
-        if list_objs is not None:
+        if list_objs is None or not len(list_objs):
+            new = "[]"
+        else:
+            new = []
             for i in list_objs:
                 new.append(i.to_dictionary())
 
-        new = cls.to_json_string(new)
+            new = cls.to_json_string(new)
         filename = cls.__name__ + ".json"
 
         with open(filename, "w") as file:
