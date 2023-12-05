@@ -125,6 +125,6 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Returns dictionary representation of the object"""
-        dic = {'id': self.id, 'width': self.width, 'height': self.height}
-        dic.update({'x': self.x, 'y': self.y})
+        dic = {'id': self.id, 'width': self.width, 'height': self.height,
+               'x': self.x, 'y': self.y}
         return dic
