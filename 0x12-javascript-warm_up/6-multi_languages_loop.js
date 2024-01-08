@@ -2,6 +2,6 @@
 
 const messages = ['C is fun', 'Python is cool', 'Javascript is amazing'];
 
-for (message of messages) {
-	console.log(message);
+for (const message of messages) {
+  console.log(message);
 }
