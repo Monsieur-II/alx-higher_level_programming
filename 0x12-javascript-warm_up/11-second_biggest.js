@@ -5,6 +5,6 @@ if (process.argv.length <= 3) {
 } else {
   const args = process.argv.slice(2).map(Number);
 
-args.sort().reverse();
-console.log(args[1]);
+  args.sort().reverse();
+  console.log(args[1]);
 }
