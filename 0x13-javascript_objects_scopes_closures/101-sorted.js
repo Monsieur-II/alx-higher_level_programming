@@ -9,11 +9,10 @@ const res = {};
 for (const value of values) {
   arr = [];
   for (const k of keys) {
-    if (dic[k] == value) {
+    if (dic[k] === value) {
       arr.push(k);
-    } 
+    }
   }
   res[value] = arr;
 }
 console.log(res);
-
