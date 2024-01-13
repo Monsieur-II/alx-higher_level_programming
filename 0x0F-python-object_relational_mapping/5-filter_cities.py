@@ -15,7 +15,7 @@ if __name__ == "__main__":
     ON cities.state_id = states.id WHERE states.name = %s
     ORDER BY cities.id""", (match,))
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    for index, element in enumerate(rows):
+        print(element, end=", " if index != len(rows) - 1 else "\n")
     cur.close()
     db.close()
