@@ -16,6 +16,6 @@ if __name__ == "__main__":
     ORDER BY cities.id""", (match,))
     rows = cur.fetchall()
     for index, element in enumerate(rows):
-        print(element, end=", " if index != len(rows) - 1 else "\n")
+        print(element[0], end=", " if index != len(rows) - 1 else "\n")
     cur.close()
     db.close()
