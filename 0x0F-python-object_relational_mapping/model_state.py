@@ -7,6 +7,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
+
 class States(Base):
     """
     Class with id and name attributes of each state
